@@ -13,14 +13,20 @@ public class RobotMap {
 	}
 
 	public static final class Drivetrain {
-		public static final int LEFT_MOTOR = 8;
-		public static final int LEFT_MOTOR_NO_ENCODER = 13;
-		public static final int RIGHT_MOTOR = 14;
-		public static final int RIGHT_MOTOR_NO_ENCODER = 11;
-		public static final int WHEEL_DIAMETER = 6;
+		public static final int A_DRIVE_MOTOR = 0;
+		public static final int A_STEERING_MOTOR = 1;
+		public static final int B_DRIVE_MOTOR = 2;
+		public static final int B_STEERING_MOTOR = 3;
+		public static final int C_DRIVE_MOTOR = 4;
+		public static final int C_STEERING_MOTOR = 5;
+		public static final int D_DRIVE_MOTOR = 6;
+		public static final int D_STEERING_MOTOR = 7;
+		public static final int WHEEL_DIAMETER = 4;
 		public static final int TICS_PER_ROTATION = 4096; 
 		public static final double INCHES_PER_ROTATION = Math.PI * RobotMap.Drivetrain.WHEEL_DIAMETER;		
 		public static final double RAMP_SPEED = .6;
+
+		public static final int PIGEON_IMU = 8;
 	}
 
 	public final class DriveToSensor {

@@ -1,13 +1,10 @@
 package frc.systems;
 
-// import java.util.logging.Logger;
-
 import com.analog.adis16470.frc.ADIS16470_IMU;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.lib14.MCR_SRX;
 import frc.lib14.UtilityMethods;
@@ -18,7 +15,7 @@ import frc.robot.RobotMap.Drivetrain;
 
 public class DriveTrain {
 	// private static final Logger logger = Logger.getLogger(DriveTrain.class.getName());
-	public static final ADIS16470_IMU GYRO = new ADIS16470_IMU();
+	public static final PigeonIMU GYRO = new PigeonIMU(RobotMap.Drivetrain.PIGEON_IMU);
 	// public static final IMUFixed GYRO = new IMUFixed();
 	private static MCR_SRX A_Drive = new MCR_SRX(RobotMap.Drivetrain.RIGHT_MOTOR);
 	private static MCR_SRX B_Drive = new MCR_SRX(Drivetrain.RIGHT_MOTOR_NO_ENCODER); 
