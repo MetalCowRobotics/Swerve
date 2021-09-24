@@ -1,12 +1,12 @@
 package frc.systems;
 
+import java.util.ArrayList;
+
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.music.Orchestra;
 import com.ctre.phoenix.sensors.PigeonIMU;
 
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.lib14.UtilityMethods;
 import frc.robot.RobotDashboard;
 import frc.robot.RobotMap;
 import frc.robot.RobotMap.Drivetrain;
@@ -22,7 +22,8 @@ public class DriveTrain {
 	private static final RobotDashboard dashboard = RobotDashboard.getInstance();
 	private static final MasterControls controller = MasterControls.getInstance();
 
-	//private static  A_Instrument = 
+	private static  Orchestra orchestra;
+	private static ArrayList<TalonFX> instruments = new ArrayList<TalonFX>();
 
 
 	public static final double SPRINT_SPEED = 1.0;
@@ -81,7 +82,20 @@ public class DriveTrain {
 		// drive.arcadeDrive(speed, controller.direction() * UtilityMethods.absMin(getThrottle(), .7));
 		//testing
 	}
+
+	public void initSong(String chirp) {
+		orchestra.loadMusic(chirp);
+	}
+
+	public void initInstruments() {
+		instruments.add(A_Drive);
+		instruments.add(B_Drive);
+		orchestra = new Orchestra(instruments);
+	}
 	
+	public void playSong() {
+		orchestra.play();
+	}
 	public void arcadeDrive(double speed, double angle) {
 	}
 
