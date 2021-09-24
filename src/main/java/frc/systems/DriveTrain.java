@@ -2,6 +2,7 @@ package frc.systems;
 
 import com.analog.adis16470.frc.ADIS16470_IMU;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -15,19 +16,23 @@ import frc.robot.RobotMap.Drivetrain;
 
 public class DriveTrain {
 	// private static final Logger logger = Logger.getLogger(DriveTrain.class.getName());
-	public static final PigeonIMU GYRO = new PigeonIMU(RobotMap.Drivetrain.PIGEON_IMU);
+	public static final PigeonIMU pigeon = new PigeonIMU(RobotMap.Drivetrain.PIGEON_IMU);
 	// public static final IMUFixed GYRO = new IMUFixed();
-	private static MCR_SRX A_Drive = new MCR_SRX(RobotMap.Drivetrain.A_DRIVE_MOTOR);
-	private static MCR_SRX B_Drive = new MCR_SRX(Drivetrain.B_DRIVE_MOTOR); 
-	private static MCR_SRX C_Drive = new MCR_SRX(RobotMap.Drivetrain.C_DRIVE_MOTOR);
-	private static MCR_SRX D_Drive = new MCR_SRX(Drivetrain.D_DRIVE_MOTOR); 
+	private static TalonFX A_Drive = new TalonFX(RobotMap.Drivetrain.A_DRIVE_MOTOR);
+	private static TalonFX B_Drive = new TalonFX(Drivetrain.B_DRIVE_MOTOR); 
+	private static TalonFX C_Drive = new TalonFX(RobotMap.Drivetrain.C_DRIVE_MOTOR);
+	private static TalonFX D_Drive = new TalonFX(Drivetrain.D_DRIVE_MOTOR); 
 	private static final RobotDashboard dashboard = RobotDashboard.getInstance();
 	private static final MasterControls controller = MasterControls.getInstance();
+
+	//private static  A_Instrument = 
 
 
 	public static final double SPRINT_SPEED = 1.0;
 	public static final double NORMAL_SPEED = 0.7;
 	public static final double CRAWL_SPEED = .5;
+
+	private double[] ypr = new double[3];
 
 	
 	private int inverted = 1;
@@ -65,6 +70,7 @@ public class DriveTrain {
 	}
 
 	public void drive() {
+		updatePigeon();
 		if (controller.invertDrive()) {
 			invert();
 		}
@@ -86,6 +92,14 @@ public class DriveTrain {
 	}
 
 	public void stop() {
+	}
+
+	private void updatePigeon() {
+		pigeon.getYawPitchRoll(ypr);
+	}
+
+	public double getYaw() {
+		return ypr[0];
 	}
 
 	/**

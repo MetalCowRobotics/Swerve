@@ -38,7 +38,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     CameraServer.getInstance().startAutomaticCapture(0);
-    driveTrain.calibrateGyro();
     dashboard.initialPush();
   }
 
@@ -52,6 +51,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    driveTrain.drive();
+    SmartDashboard.putNumber("yaw", driveTrain.getYaw());
   }
 
   @Override
