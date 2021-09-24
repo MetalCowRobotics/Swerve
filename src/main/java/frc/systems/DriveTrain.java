@@ -17,10 +17,10 @@ public class DriveTrain {
 	// private static final Logger logger = Logger.getLogger(DriveTrain.class.getName());
 	public static final PigeonIMU GYRO = new PigeonIMU(RobotMap.Drivetrain.PIGEON_IMU);
 	// public static final IMUFixed GYRO = new IMUFixed();
-	private static MCR_SRX A_Drive = new MCR_SRX(RobotMap.Drivetrain.RIGHT_MOTOR);
-	private static MCR_SRX B_Drive = new MCR_SRX(Drivetrain.RIGHT_MOTOR_NO_ENCODER); 
-	private static MCR_SRX C_Drive = new MCR_SRX(RobotMap.Drivetrain.LEFT_MOTOR);
-	private static MCR_SRX D_Drive = new MCR_SRX(Drivetrain.LEFT_MOTOR_NO_ENCODER); 
+	private static MCR_SRX A_Drive = new MCR_SRX(RobotMap.Drivetrain.A_DRIVE_MOTOR);
+	private static MCR_SRX B_Drive = new MCR_SRX(Drivetrain.B_DRIVE_MOTOR); 
+	private static MCR_SRX C_Drive = new MCR_SRX(RobotMap.Drivetrain.C_DRIVE_MOTOR);
+	private static MCR_SRX D_Drive = new MCR_SRX(Drivetrain.D_DRIVE_MOTOR); 
 	private static final RobotDashboard dashboard = RobotDashboard.getInstance();
 	private static final MasterControls controller = MasterControls.getInstance();
 
@@ -77,8 +77,6 @@ public class DriveTrain {
 
 		// drive.arcadeDrive(speed, controller.direction() * UtilityMethods.absMin(getThrottle(), .7));
 		//testing
-
-		SmartDashboard.putNumber("Gyro", getAngle());
 	}
 	
 	public void arcadeDrive(double speed, double angle) {
@@ -88,20 +86,6 @@ public class DriveTrain {
 	}
 
 	public void stop() {
-	}
-
-	public void calibrateGyro() {
-		GYRO.calibrate();
-	}
-
-	public void resetGyro() {
-		DriverStation.reportWarning("Gyro Before Reset: " + getAngle(), false);
-		GYRO.reset();
-		DriverStation.reportWarning("Gryo After Reset: " + getAngle(), false);
-	}
-
-	public double getAngle() {
-		return -GYRO.getAngle();
 	}
 
 	/**
