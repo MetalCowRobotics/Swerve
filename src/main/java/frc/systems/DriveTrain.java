@@ -20,10 +20,10 @@ public class DriveTrain {
 	// private static final Logger logger = Logger.getLogger(DriveTrain.class.getName());
 	public static final ADIS16470_IMU GYRO = new ADIS16470_IMU();
 	// public static final IMUFixed GYRO = new IMUFixed();
-	private static MCR_SRX A_Drive = new MCR_SRX(RobotMap.Drivetrain.RIGHT_MOTOR);
-	private static MCR_SRX B_Drive = new MCR_SRX(Drivetrain.RIGHT_MOTOR_NO_ENCODER); 
-	private static MCR_SRX C_Drive = new MCR_SRX(RobotMap.Drivetrain.LEFT_MOTOR);
-	private static MCR_SRX D_Drive = new MCR_SRX(Drivetrain.LEFT_MOTOR_NO_ENCODER); 
+	private static MCR_SRX A_Drive = new MCR_SRX(RobotMap.Drivetrain.A_DRIVE_MOTOR);
+	private static MCR_SRX B_Drive = new MCR_SRX(Drivetrain.B_DRIVE_MOTOR); 
+	private static MCR_SRX C_Drive = new MCR_SRX(RobotMap.Drivetrain.C_DRIVE_MOTOR);
+	private static MCR_SRX D_Drive = new MCR_SRX(Drivetrain.D_DRIVE_MOTOR); 
 	private static final RobotDashboard dashboard = RobotDashboard.getInstance();
 	private static final MasterControls controller = MasterControls.getInstance();
 
