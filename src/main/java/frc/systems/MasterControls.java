@@ -36,49 +36,18 @@ public class MasterControls {
 		return driver.getAButton();
 	}
 
-	public boolean invertDrive() {
-		return driver.getYButtonPressed();
-	}
-
-	public double forwardSpeed() {
-		if (driver.getRT() > 0) {
-			return 0.5 + (driver.getRT() / 2);
-		} else {
-			return 0;
-		}
-	}
-
-	public double reverseSpeed() {
-		if (driver.getLT() > 0) {
-			return 0.5 + (driver.getLT() / 2);
-		} else {
-			return 0;
-		}	}
-
-	public double direction() {
+	//joysticks
+	public double getLX() {
 		return driver.getLX();
 	}
-
-	public boolean lowerIntake() {
-		driverInakeButonPressed = driver.getBumperPressed(Hand.kLeft);
-		boolean lower = isDpadLowerHalf(operator) || (driverInakeButonPressed && intakeUp);
-		if (lower) {
-			intakeUp = false;
-		}
-		// intakeUp = false;
-		return lower;		
-		// return isDpadLowerHalf(operator);
+	public double getLY() {
+		return driver.getLY();
 	}
-
-	public boolean raiseIntake() {
-		boolean raise = isDpadUpperHalf(operator) || (driverInakeButonPressed && !intakeUp);
-		if (raise) {
-			intakeUp = true;
-		}
-		// intakeUp = true;
-		driverInakeButonPressed = false;
-		return raise;
-		// return isDpadUpperHalf(operator);
+	public double getRX() {
+		return driver.getRX();
+	}
+	public double getRY() {
+		return driver.getRY();
 	}
 
 	private boolean isDpadUpperHalf(XboxControllerMetalCow controller) {
@@ -98,10 +67,6 @@ public class MasterControls {
 		return false;
 	}
 
-	public boolean intakeOnOff() {
-		return operator.getBumperPressed(Hand.kRight) || driver.getBumperPressed(Hand.kRight);
-	}
-
 	public void changeMode() {
 		if (operator.getRawButtonPressed(7)) {
 			fieldMode = !fieldMode;
@@ -111,43 +76,5 @@ public class MasterControls {
 
 	public boolean getFieldMode() {
 		return fieldMode;
-	}
-
-	public double climbSpeed() {
-		if (fieldMode) {
-			return 0;
-		}
-		return UtilityMethods.deadZoneCalculation(operator.getLT(), 0.1);
-	}
-
-	public boolean prepairToShoot() {
-		if (operator.getRT() > .1) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean shootNow() {
-		return operator.getAButton();
-	}
-
-	public boolean shootWhenReady() {
-		return operator.getBButton();
-	}
-
-	public double hoodAdjustment() {
-		return UtilityMethods.deadZoneCalculation(operator.getLY(), 0.15);
-	}
-
-	public double turretAdjustment() {
-		return UtilityMethods.deadZoneCalculation(operator.getRX(), 0.15);
-	}
-
-	public boolean target() {
-		return operator.getXButton();
-	}
-
-	public boolean colorWheelForward() {
-		return operator.getYButton();
 	}
 }
