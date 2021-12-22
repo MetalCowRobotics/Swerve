@@ -38,10 +38,10 @@ public class DriveTrain {
 	private static TalonFX B_Drive = new TalonFX(Drivetrain.B_DRIVE_MOTOR); 
 	private static TalonFX C_Drive = new TalonFX(RobotMap.Drivetrain.C_DRIVE_MOTOR);
 	private static TalonFX D_Drive = new TalonFX(Drivetrain.D_DRIVE_MOTOR);
-	private static TalonFX A_Steer = new TalonFX(RobotMap.Drivetrain.A_DRIVE_MOTOR);
-	private static TalonFX B_Steer = new TalonFX(Drivetrain.B_DRIVE_MOTOR); 
-	private static TalonFX C_Steer = new TalonFX(RobotMap.Drivetrain.C_DRIVE_MOTOR);
-	private static TalonFX D_Steer = new TalonFX(Drivetrain.D_DRIVE_MOTOR);
+	private static TalonFX A_Steer = new TalonFX(RobotMap.Drivetrain.A_STEERING_MOTOR);
+	private static TalonFX B_Steer = new TalonFX(Drivetrain.B_STEERING_MOTOR); 
+	private static TalonFX C_Steer = new TalonFX(RobotMap.Drivetrain.C_STEERING_MOTOR);
+	private static TalonFX D_Steer = new TalonFX(Drivetrain.D_STEERING_MOTOR);
 	private static CANCoder A_Encoder = new CANCoder(RobotMap.Drivetrain.A_ENCODER);
 	private static CANCoder B_Encoder = new CANCoder(RobotMap.Drivetrain.B_ENCODER);
 	private static CANCoder C_Encoder = new CANCoder(RobotMap.Drivetrain.C_ENCODER);
@@ -59,7 +59,7 @@ public class DriveTrain {
 	public static final double SPRINT_SPEED = 1.0;
 	public static final double NORMAL_SPEED = 0.7;
 	public static final double CRAWL_SPEED = 0.5;
-	public static final double TURN_SPEED = 0.3;
+	public static final double TURN_SPEED = 0.1;
 
 	private static final double LENGTH = 30;
 	private static final double WIDTH = 30;
@@ -111,6 +111,8 @@ public class DriveTrain {
 	public void initInstruments() {
 		instruments.add(A_Drive);
 		instruments.add(B_Drive);
+		instruments.add(C_Drive);
+		instruments.add(D_Drive);
 		orchestra = new Orchestra(instruments);
 	}
 	

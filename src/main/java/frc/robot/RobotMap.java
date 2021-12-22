@@ -30,7 +30,7 @@ public class RobotMap {
 		public static final double INCHES_PER_ROTATION = Math.PI * RobotMap.Drivetrain.WHEEL_DIAMETER;		
 		public static final double RAMP_SPEED = .6;
 
-		public static final int PIGEON_IMU = 8;
+		public static final int PIGEON_IMU = 13;
 	}
 
 	public final class DriveToSensor {
